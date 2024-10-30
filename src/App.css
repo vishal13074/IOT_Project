@@ -1,38 +1,79 @@
-.App {
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* White text */
+}
+
+.app {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #1e1e1e; /* Slightly lighter dark background */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #ffffff; /* Teal color for the heading */
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #051086; /* Pink button color */
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e80c0c; /* Darker pink on hover */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+th {
+  background-color: #333; /* Dark background for header */
+  color: #ffffff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+tr:hover {
+  background-color: #444; /* Row highlight on hover */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 600px) {
+  h1 {
+      font-size: 2em;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  button {
+      font-size: 1em;
   }
-  to {
-    transform: rotate(360deg);
+
+  th, td {
+      padding: 15px;
+      text-align: center;
+      color: #ffffff;
   }
 }
