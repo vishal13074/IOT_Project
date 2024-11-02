@@ -5,11 +5,21 @@ import './App.css';
 const App = () => {
     const [lastHeartRate, setLastHeartRate] = useState(null); // State for last heart rate
     const [steps, setSteps] = useState([]); // State for step count data
+    const [heartRateMessage, setHeartRateMessage] = useState(""); // State for heart rate message
 
     const fetchLastHeartRate = async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/last-heartrate');
-            setLastHeartRate(response.data);
+            const data = response.data;
+            setLastHeartRate(data);
+
+            // Check the latest heart rate and set message
+            const latestHeartRate = data?.heart_rate;
+            if (latestHeartRate >= 60 && latestHeartRate <= 100) {
+                setHeartRateMessage("You're Good!...");
+            } else {
+                setHeartRateMessage("Your heart rate is outside the normal range. Consider consulting a doctor...");
+            }
         } catch (error) {
             console.error('Error fetching last heart rate:', error);
         }
@@ -39,7 +49,7 @@ const App = () => {
         const interval = setInterval(() => {
             fetchLastHeartRate();
             fetchSteps();
-        }, 3000); // Update every 5 seconds
+        }, 3000); // Update every 3 seconds
         return () => clearInterval(interval);
     }, []);
 
@@ -49,6 +59,8 @@ const App = () => {
             <button onClick={startMonitoring}>Start Monitoring</button>
 
             <h2>Heart Rate ❤️</h2>
+            {/* Display message based on heart rate */}
+            <p>{heartRateMessage}</p>
             <table>
                 <thead>
                     <tr>
